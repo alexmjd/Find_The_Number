@@ -4,6 +4,12 @@ int random(int min, int max) {
     return std::rand() % (max + 1 - min) + min;
 }
 
+void clearInputBuffer () {
+    std::cin.clear();
+    // ignore all chars in input stream until `\n`
+    std::cin.ignore(std::numeric_limits<int>::max(),'\n');
+}
+
 int main() {
     srand(time(NULL));
     int min(10000), max(50000);
@@ -21,6 +27,13 @@ int main() {
     while (propal != numberToFind) {
         std::cout << "Enter the number you think is correct : " << std::endl;
         std::cin >> propal;
+
+        // Check User Input
+        if(std::cin.fail()) {
+            std::cout << "NaN" << std::endl;
+            clearInputBuffer();
+            continue;
+        }
         if (propal < numberToFind)
             std::cout << "It's more." << std::endl;
         else if (propal > numberToFind)
