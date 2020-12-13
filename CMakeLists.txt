@@ -3,4 +3,6 @@ project(Find_The_Number)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Find_The_Number main.cpp)
+include_directories(include)
+
+add_executable(Find_The_Number main.cpp src/utils.cpp)

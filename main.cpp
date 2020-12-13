@@ -1,21 +1,12 @@
 #include <iostream>
-
-int random(int min, int max) {
-    return std::rand() % (max + 1 - min) + min;
-}
-
-void clearInputBuffer () {
-    std::cin.clear();
-    // ignore all chars in input stream until `\n`
-    std::cin.ignore(std::numeric_limits<int>::max(),'\n');
-}
+#include "utils.h"
 
 int main() {
     srand(time(NULL));
     int min(10000), max(50000);
     int propal(0);
 
-    int numberToFind(random(min, max));
+    int numberToFind(getRandom(min, max));
 
     std::cout << "Vous devez trouver le nombre, compris entre " << min << " et " << max << std::endl;
     std::cout << "(" << numberToFind << ")" << std::endl;
