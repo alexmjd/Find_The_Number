@@ -1,12 +1,16 @@
+//
+// Created by alexandre majda on 13/12/2020.
+//
+
 #include <iostream>
 #include "utils.h"
 
 int main() {
     srand(time(NULL));
-    int min(10000), max(50000);
+    const int min(10000), max(50000);
     int propal(0);
 
-    int numberToFind(getRandom(min, max));
+    const int numberToFind(getRandom(min, max));
 
     std::cout << "Vous devez trouver le nombre, compris entre " << min << " et " << max << std::endl;
     std::cout << "(" << numberToFind << ")" << std::endl;
