@@ -1,8 +1,18 @@
 #include <iostream>
 
+int random(int min, int max) {
+    return std::rand() % (max + 1 - min) + min;
+}
+
 int main() {
+    srand(time(NULL));
+    int min(10000), max(50000);
     int propal(0);
-    int numberToFind(32781);
+
+    int numberToFind(random(min, max));
+
+    std::cout << "Vous devez trouver le nombre, compris entre " << min << " et " << max << std::endl;
+    std::cout << "(" << numberToFind << ")" << std::endl;
 
     /*
      * While the user hasn't found the correct number yet
