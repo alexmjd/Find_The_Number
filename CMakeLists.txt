@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(include)
 
-add_executable(Find_The_Number main.cpp src/utils.cpp)
+add_executable(Find_The_Number main.cpp src/utils.cpp src/game.cpp)

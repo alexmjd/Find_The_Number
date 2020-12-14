@@ -4,34 +4,36 @@
 
 #include <iostream>
 #include "utils.h"
+#include <game.h>
+#include <string>
 
 int main() {
-    srand(time(NULL));
-    const int min(10000), max(50000);
+
+    Game* game = new Game();
     int propal(0);
 
-    const int numberToFind(getRandom(min, max));
 
-    std::cout << "Vous devez trouver le nombre, compris entre " << min << " et " << max << std::endl;
-    std::cout << "(" << numberToFind << ")" << std::endl;
+    game->setNewRandom();
+    game->startMessage();
 
     /*
      * While the user hasn't found the correct number yet
      * the user has to type the number he thinks is correct
      */
-    while (propal != numberToFind) {
+    while (propal != game->getNumberToFind()) {
         std::cout << "Enter the number you think is correct : " << std::endl;
         std::cin >> propal;
 
         // Check User Input
         if(std::cin.fail()) {
+            std::cin.clear();
             std::cout << "NaN" << std::endl;
             clearInputBuffer();
             continue;
         }
-        if (propal < numberToFind)
+        if (propal < game->getNumberToFind())
             std::cout << "It's more." << std::endl;
-        else if (propal > numberToFind)
+        else if (propal > game->getNumberToFind())
             std::cout << "It's less." << std::endl;
     }
 
