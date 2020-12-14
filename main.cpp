@@ -41,7 +41,6 @@ int main() {
             else if (propal > game->getNumberToFind())
                 std::cout << "It's less." << std::endl;
         }
-        propal = 0;
         std::cout << "Congrats ! You Win!" << std::endl;
 
         while (nok) {
@@ -65,6 +64,7 @@ int main() {
             }
         }
         nok = true;
+        propal = 0;
     }
 
     return 0;
