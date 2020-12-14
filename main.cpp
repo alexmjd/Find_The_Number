@@ -26,6 +26,10 @@ int main() {
          * the user has to type the number he thinks is correct
          */
         while (propal != game->getNumberToFind()) {
+
+            // Display the last value
+            if (propal != 0)
+                std::cout << "Last proposition : " << propal << std::endl;
             std::cout << "Enter the number you think is correct : " << std::endl;
             std::cin >> propal;
 
@@ -36,6 +40,8 @@ int main() {
                 clearInputBuffer();
                 continue;
             }
+
+            // Gameplay
             if (propal < game->getNumberToFind())
                 std::cout << "It's more." << std::endl;
             else if (propal > game->getNumberToFind())
@@ -43,6 +49,7 @@ int main() {
         }
         std::cout << "Congrats ! You Win!" << std::endl;
 
+        // Check user input for replaying
         while (nok) {
             std::cout << "Do you want to play again ? (y/n)" << std::endl;
             std::cin >> userAnswer;
@@ -63,6 +70,8 @@ int main() {
                 nok = true;
             }
         }
+
+        // Restart values
         nok = true;
         propal = 0;
     }
