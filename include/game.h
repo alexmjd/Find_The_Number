@@ -17,8 +17,8 @@ class Game {
         void startMessage() const;
         void setNewRandom();
 
-        int getNumberToFind() const;
         void establishedGamePlay(int &propal);
+        void gameLoop();
 
         bool getUserReplaying();
 };
