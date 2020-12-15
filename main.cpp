@@ -42,10 +42,7 @@ int main() {
             }
 
             // Gameplay
-            if (propal < game->getNumberToFind())
-                std::cout << "It's more." << std::endl;
-            else if (propal > game->getNumberToFind())
-                std::cout << "It's less." << std::endl;
+            game->establishedGamePlay(propal);
         }
         std::cout << "Congrats ! You Win!" << std::endl;
 

@@ -18,6 +18,7 @@ class Game {
         void setNewRandom();
 
         int getNumberToFind() const;
+        void establishedGamePlay(int &propal);
 };
 
 

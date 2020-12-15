@@ -19,3 +19,10 @@ void Game::setNewRandom() {
 int Game::getNumberToFind() const {
     return _numberToFind;
 }
+
+void Game::establishedGamePlay(int &propal) {
+    if (propal < getNumberToFind())
+        std::cout << "It's more." << std::endl;
+    else if (propal > getNumberToFind())
+        std::cout << "It's less." << std::endl;
+}
