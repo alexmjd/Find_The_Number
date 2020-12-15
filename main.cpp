@@ -11,15 +11,12 @@ int main() {
 
     Game* game = new Game();
     int propal(0);
-    char userAnswer;
-    bool replay(true), nok(true);
+    bool replay(true);
 
 
     while (replay) {
         game->setNewRandom();
         game->startMessage();
-
-        replay = false;
 
         /*
          * While the user hasn't found the correct number yet
@@ -47,29 +44,8 @@ int main() {
         std::cout << "Congrats ! You Win!" << std::endl;
 
         // Check user input for replaying
-        while (nok) {
-            std::cout << "Do you want to play again ? (y/n)" << std::endl;
-            std::cin >> userAnswer;
-            if (userAnswer == 'o'
-                || userAnswer == 'O'
-                || userAnswer == 'y'
-                || userAnswer == 'Y') {
-                replay = true;
-                nok = false;
-                std::cout << "Great, Here we go again !" << std::endl;
-            } else if (userAnswer == 'n'
-                       || userAnswer == 'N') {
-                replay = false;
-                nok = false;
-                std::cout << "'Kay, Bye !" << std::endl;
-            } else {
-                std::cout << "Wrong answer, please type 'y' or 'n'." << std::endl;
-                nok = true;
-            }
-        }
+        replay = game->getUserReplaying();
 
-        // Restart values
-        nok = true;
         propal = 0;
     }
 

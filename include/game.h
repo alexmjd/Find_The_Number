@@ -19,6 +19,8 @@ class Game {
 
         int getNumberToFind() const;
         void establishedGamePlay(int &propal);
+
+        bool getUserReplaying();
 };
 
 
