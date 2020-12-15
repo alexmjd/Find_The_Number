@@ -11,4 +11,6 @@ int getRandom(int min, int max);
 
 void clearInputBuffer();
 
+void checkMenuInput(int &value, int min, int max, std::string sentence);
+
 #endif //FIND_THE_NUMBER_UTILS_H

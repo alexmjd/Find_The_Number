@@ -10,10 +10,13 @@
 class Game {
     private:
         int _numberToFind;
-        const int _min = 10000;
-        const int _max = 50000;
+        int _min = 10000;
+        int _max = 50000;
+        int _difficultyLevel;
+        int _gameMode;
 
     public:
+        void startGame();
         void startMessage() const;
         void setNewRandom();
 
@@ -21,6 +24,8 @@ class Game {
         void gameLoop();
 
         bool getUserReplaying();
+
+        void setGameParameters();
 };
 
 

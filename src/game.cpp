@@ -5,6 +5,11 @@
 #include <game.h>
 #include <utils.h>
 
+void Game::startGame() {
+    startMessage();
+    setNewRandom();
+}
+
 void Game::startMessage() const {
     std::cout << "Vous devez trouver le nombre, compris entre " << _min << " et " << _max << std::endl;
     std::cout << "(" << _numberToFind << ")" << std::endl;
@@ -67,8 +72,7 @@ void Game::gameLoop() {
 
         // Check User Input
         if(std::cin.fail()) {
-            std::cin.clear();
-            std::cout << "NaN" << std::endl;
+            std::cout << "You have to provide a valid Integer" << std::endl;
             clearInputBuffer();
             continue;
         }
@@ -77,5 +81,22 @@ void Game::gameLoop() {
 
         // Gameplay
         establishedGamePlay(propal);
+    }
+}
+
+void Game::setGameParameters() {
+    bool ok = true;
+    while (ok) {
+        std::cout << "Would you play Solo or Multiplayer ? (1 = Solo, 2 = Multiplayer)" << std::endl;
+        checkMenuInput(_gameMode, 1, 2, "Please choose a valid game mode");
+
+        std::cout << "Which difficulty will you choose ? (1 = Easy, 2 = Medium, 3 = Hard)" << std::endl;
+        checkMenuInput(_difficultyLevel, 1, 3, "Please choose a valid difficulty level");
+
+        if (_difficultyLevel != 0 && _gameMode != 0)
+            ok = false;
+
+        std::cout << "Difficulty level : " << _difficultyLevel << std::endl;
+        std::cout << "Game Mode : " << _gameMode << std::endl;
     }
 }
