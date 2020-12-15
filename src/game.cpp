@@ -6,8 +6,12 @@
 #include <utils.h>
 
 void Game::startGame() {
-    startMessage();
     setNewRandom();
+    startMessage();
+    gameLoop();
+
+    _difficultyLevel = 0;
+    _gameMode = 0;
 }
 
 void Game::startMessage() const {
@@ -20,13 +24,21 @@ void Game::setNewRandom() {
     _numberToFind = getRandom(_min, _max);
 }
 
-void Game::establishedGamePlay(int &propal) {
-    if (propal < _numberToFind)
+/**
+ * Basic gameplay
+ * @param propal
+ */
+void Game::establishedGamePlay() {
+    if (_propal < _numberToFind)
         std::cout << "It's more." << std::endl;
-    else if (propal > _numberToFind)
+    else if (_propal > _numberToFind)
         std::cout << "It's less." << std::endl;
 }
 
+/**
+ * Loop to get if the user wants to replay or not
+ * @return replay
+ */
 bool Game::getUserReplaying() {
     bool nok = true;
     bool replay = true;
@@ -55,20 +67,19 @@ bool Game::getUserReplaying() {
     return replay;
 }
 
-/*
+/**
  * While the user hasn't found the correct number yet
  * the user has to type the number he thinks is correct
  */
 void Game::gameLoop() {
-    int propal(0);
 
-    while (propal != _numberToFind) {
+    while (_propal != _numberToFind) {
 
         // Display the last value
-        if (propal != 0)
-            std::cout << "Last proposition : " << propal << std::endl;
+        if (_propal != 0)
+            std::cout << "Last proposition : " << _propal << std::endl;
         std::cout << "Enter the number you think is correct : " << std::endl;
-        std::cin >> propal;
+        std::cin >> _propal;
 
         // Check User Input
         if(std::cin.fail()) {
@@ -77,13 +88,16 @@ void Game::gameLoop() {
             continue;
         }
 
-        std::cout << "Congrats ! You Win!" << std::endl;
-
         // Gameplay
-        establishedGamePlay(propal);
+        establishedGamePlay();
     }
+    std::cout << "Congrats ! You Win!" << std::endl;
+    _propal = 0;
 }
 
+/**
+ * Menu about choosing game mode and difficulty
+ */
 void Game::setGameParameters() {
     bool ok = true;
     while (ok) {

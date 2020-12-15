@@ -14,6 +14,13 @@ void clearInputBuffer () {
     std::cin.ignore(std::numeric_limits<int>::max(),'\n');
 }
 
+/**
+ * Still asking for a valid number while the given value isn't between min and max
+ * @param value the value which needs the check
+ * @param min the minimal bound
+ * @param max the maximal bound
+ * @param sentence the error message displayed
+ */
 void checkMenuInput(int &value, int min, int max, std::string sentence) {
     while (value > max || value < min) {
         std::cin >> value;

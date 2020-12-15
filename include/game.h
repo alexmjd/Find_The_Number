@@ -14,13 +14,14 @@ class Game {
         int _max = 50000;
         int _difficultyLevel;
         int _gameMode;
+        int _propal;
 
     public:
         void startGame();
         void startMessage() const;
         void setNewRandom();
 
-        void establishedGamePlay(int &propal);
+        void establishedGamePlay();
         void gameLoop();
 
         bool getUserReplaying();
