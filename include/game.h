@@ -7,14 +7,16 @@
 
 #include <iostream>
 
+enum difficultyLevel {easy = 1, medium = 2, hard = 3};
+
 class Game {
     private:
         int _numberToFind;
-        int _min = 10000;
         int _max = 50000;
         int _difficultyLevel;
         int _gameMode;
         int _propal;
+        int _limitTime;
 
     public:
         void startGame();
@@ -27,6 +29,7 @@ class Game {
         bool getUserReplaying();
 
         void setGameParameters();
+        void setLevelParameters();
 };
 
 

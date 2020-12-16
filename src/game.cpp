@@ -15,13 +15,13 @@ void Game::startGame() {
 }
 
 void Game::startMessage() const {
-    std::cout << "Vous devez trouver le nombre, compris entre " << _min << " et " << _max << std::endl;
+    std::cout << "Vous devez trouver le nombre, compris entre 0 et " << _max << std::endl;
     std::cout << "(" << _numberToFind << ")" << std::endl;
 }
 
 void Game::setNewRandom() {
     srand(time(NULL));
-    _numberToFind = getRandom(_min, _max);
+    _numberToFind = getRandom(0, _max);
 }
 
 /**
@@ -112,5 +112,26 @@ void Game::setGameParameters() {
 
         std::cout << "Difficulty level : " << _difficultyLevel << std::endl;
         std::cout << "Game Mode : " << _gameMode << std::endl;
+    }
+    setLevelParameters();
+}
+
+/**
+ * Setting boundaries and timer from choosen difficulty level
+ */
+void Game::setLevelParameters(){
+    switch (_difficultyLevel) {
+        case 1:
+            _max = 50000;
+            _limitTime = 45;
+            break;
+        case 2:
+            _max = 100000;
+            _limitTime = 30;
+            break;
+        case 3:
+            _max = 200000;
+            _limitTime = 20;
+            break;
     }
 }
