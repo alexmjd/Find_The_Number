@@ -3,6 +3,9 @@
 //
 
 #include "utils.h"
+#ifdef _WIN32
+    #include <limits>
+#endif
 
 int getRandom(int min, int max) {
     return std::rand() % (max + 1 - min) + min;
