@@ -3,6 +3,10 @@ project(Find_The_Number)
 
 set(CMAKE_CXX_STANDARD 17)
 
+# Adding headers directory
 include_directories(include)
 
-add_executable(${PROJECT_NAME} main.cpp src/utils.cpp src/game.cpp)
+# Adding code source directory
+aux_source_directory(src/ SRC)
+
+add_executable(${PROJECT_NAME} ${SRC} main.cpp)
