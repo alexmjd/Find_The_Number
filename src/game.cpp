@@ -5,6 +5,10 @@
 #include <game.h>
 #include <utils.h>
 
+#ifdef _WIN32
+    #include <ctime>
+#endif
+
 void Game::startMessage() const {
     std::cout << "Vous devez trouver le nombre, compris entre " << _min << " et " << _max << std::endl;
     std::cout << "(" << _numberToFind << ")" << std::endl;
