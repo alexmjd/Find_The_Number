@@ -14,8 +14,9 @@ int main() {
 
     // Set FPS limit to avoid overwarm of the computer (and because it's useless too)
     window.setFramerateLimit(60);
+    window.setVerticalSyncEnabled(true);
 
-    float widthRect = window.getSize().x / 4;
+    float widthRect = 250.f;
     float heightRect = 150.f;
 
 
@@ -29,10 +30,10 @@ int main() {
     rect.setPosition(window.getSize().x / 2, window.getSize().y / 2);
 
     rect2.setOrigin(rect2.getSize().x / 2, rect2.getSize().y / 2);
-    rect2.setPosition(rect.getPosition().x / 2 - 20, window.getSize().y / 2);
+    rect2.setPosition(rect.getPosition().x / 2 - 50, window.getSize().y / 2);
 
     rect3.setOrigin(rect3.getSize().x / 2, rect3.getSize().y / 2);
-    rect3.setPosition(20 + rect.getPosition().x + rect.getPosition().x / 2,
+    rect3.setPosition(50 + rect.getPosition().x + rect.getPosition().x / 2,
                       window.getSize().y / 2);
 
     // Keep the window open while the window event type isn't `close`
