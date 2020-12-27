@@ -77,9 +77,9 @@ void Game::gameLoop() {
             continue;
         }
 
-        std::cout << "Congrats ! You Win!" << std::endl;
 
         // Gameplay
         establishedGamePlay(propal);
     }
+    std::cout << "Congrats ! You Win!" << std::endl;
 }
