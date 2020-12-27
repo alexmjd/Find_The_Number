@@ -12,6 +12,22 @@ int main() {
     sf::RenderWindow window;
     window.create(sf::VideoMode(800, 600), "Find The Number");
 
+    // Set FPS limit to avoid overwarm of the computer (and because it's useless too)
+    window.setFramerateLimit(60);
+
+    // Declare 3 rects for choosing the difficulty level
+    sf::RectangleShape rect(sf::Vector2(150.f, 150.f));
+    sf::RectangleShape rect2(sf::Vector2(150.f, 150.f));
+    sf::RectangleShape rect3(sf::Vector2(150.f, 150.f));
+
+    // Set options for rects
+    rect.setOrigin(rect.getSize().x / 2, rect.getSize().y / 2);
+    rect.setPosition(rect.getSize().x, window.getSize().y / 2);
+    rect2.setOrigin(rect2.getSize().x / 2, rect2.getSize().y / 2);
+    rect2.setPosition(rect2.getSize().x * 2 + 20, window.getSize().y / 2);
+    rect3.setOrigin(rect3.getSize().x / 2, rect3.getSize().y / 2);
+    rect3.setPosition(rect3.getSize().x * 3 + 40, window.getSize().y / 2);
+
     // Keep the window open while the window event type isn't `close`
     while(window.isOpen()) {
         sf::Event event;
@@ -19,14 +35,26 @@ int main() {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                 window.close();
+
+            // Detect when specific key is pressed (sf::Keyboard::isKeyPressed trigger press & release event)
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Space ||
+                    event.key.code == sf::Keyboard::Enter)
+                    std::cout << "Key " << event.key.code << " has been pressed" << std::endl;
+            }
         }
+
         // Clear the window before drawing anything to avoid random pixels
         window.clear(sf::Color::Black);
 
+        window.draw(rect);
+        window.draw(rect2);
+        window.draw(rect3);
 
         // End the current frame, Display all what have been draw
         window.display();
     }
+
 //    Game* game = new Game();
 //    bool replay(true);
 //
