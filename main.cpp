@@ -2,6 +2,7 @@
 // Created by Bilbhur on 13/12/2020.
 //
 
+#include <menu.h>
 #include <game.h>
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -16,25 +17,9 @@ int main() {
     window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
 
-    float widthRect = 250.f;
-    float heightRect = 150.f;
-
-
-    // Declare 3 rects for choosing the difficulty level
-    sf::RectangleShape rect(sf::Vector2(widthRect, heightRect));
-    sf::RectangleShape rect2(sf::Vector2(widthRect, heightRect));
-    sf::RectangleShape rect3(sf::Vector2(widthRect, heightRect));
-
-    // Set options for rects
-    rect.setOrigin(rect.getSize().x / 2, rect.getSize().y / 2);
-    rect.setPosition(window.getSize().x / 2, window.getSize().y / 2);
-
-    rect2.setOrigin(rect2.getSize().x / 2, rect2.getSize().y / 2);
-    rect2.setPosition(rect.getPosition().x / 2 - 50, window.getSize().y / 2);
-
-    rect3.setOrigin(rect3.getSize().x / 2, rect3.getSize().y / 2);
-    rect3.setPosition(50 + rect.getPosition().x + rect.getPosition().x / 2,
-                      window.getSize().y / 2);
+    // Instanciate the menu
+    Menu menu;
+    menu.setRectangles(window.getSize().x, window.getSize().y);
 
     // Keep the window open while the window event type isn't `close`
     while(window.isOpen()) {
@@ -55,9 +40,7 @@ int main() {
         // Clear the window before drawing anything to avoid random pixels
         window.clear(sf::Color::Black);
 
-        window.draw(rect);
-        window.draw(rect2);
-        window.draw(rect3);
+        menu.draw(window);
 
         // End the current frame, Display all what have been draw
         window.display();
