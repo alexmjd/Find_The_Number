@@ -30,4 +30,23 @@ void Menu::setRectanglesPosition(float windowX, float windowY) {
 void Menu::draw(sf::RenderWindow &window) {
     for(sf::RectangleShape rect: _menuElements)
         window.draw(rect);
+    setTextInRectangle(window);
+}
+
+void Menu::setTextInRectangle(sf::RenderWindow &window) {
+    sf::Font font;
+    if (!font.loadFromFile("../assets/fonts/Quicksand-Light.ttf"))
+        std::cout << "Error from file" << std::endl;
+
+    sf::Text text;
+    text.setFont(font);
+    text.setFillColor(sf::Color::Red);
+    text.setString(L"ANOTHER");
+    text.setOrigin(text.getGlobalBounds().width / 2, text.getGlobalBounds().height);
+
+    for (sf::RectangleShape &rect : _menuElements) {
+        text.setPosition(rect.getPosition().x, rect.getPosition().y);
+
+        window.draw(text);
+    }
 }

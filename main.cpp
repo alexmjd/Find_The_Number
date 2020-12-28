@@ -17,6 +17,18 @@ int main() {
     window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
 
+    // Setting font & text
+    sf::Font font;
+    if (!font.loadFromFile("../assets/fonts/Quicksand-Light.ttf"))
+        std::cout << "Failed to loaded font." << std::endl;
+
+    sf::Text text;
+    text.setFont(font);
+    text.setString("Find the Number");
+    text.setCharacterSize(48);
+    text.setOrigin(text.getGlobalBounds().width/2, text.getGlobalBounds().height);
+    text.setPosition(window.getSize().x / 2, window.getSize().y / 4);
+
     // Instanciate the menu
     Menu menu;
     menu.setRectangles(window.getSize().x, window.getSize().y);
@@ -41,6 +53,7 @@ int main() {
         window.clear(sf::Color::Black);
 
         menu.draw(window);
+        window.draw(text);
 
         // End the current frame, Display all what have been draw
         window.display();

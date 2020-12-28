@@ -23,6 +23,8 @@ public:
     void setRectanglesPosition(float windowX, float windowY);
 
     void draw(sf::RenderWindow &window);
-};
+
+    void setTextInRectangle(sf::RenderWindow &window);
+    };
 
 #endif //FIND_THE_NUMBER_MENU_H
