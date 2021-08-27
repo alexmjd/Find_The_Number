@@ -2,6 +2,10 @@
 
 Little game about finding a random number in specific range
 
+Installation :
+- Make sure that you got the G++ compiler installed
+- Make sure that you've got SFML installed
+
 # Cross Compilation
 
 ## SFML
